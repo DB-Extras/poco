@@ -22,6 +22,15 @@
 #include "Poco/Exception.h"
 #include "Poco/ScopedLock.h"
 
+#if __cplusplus >= 201103L
+    #ifndef POCO_HAVE_STD_ATOMICS
+        #define POCO_HAVE_STD_ATOMICS
+    #endif
+#endif
+
+#ifdef POCO_HAVE_STD_ATOMICS
+    #include <atomic>
+#endif
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)
